@@ -133,6 +133,7 @@
             this.btnThem.TabIndex = 7;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -222,7 +223,7 @@
             this.Phai});
             this.dgvHocSinh.Location = new System.Drawing.Point(22, 194);
             this.dgvHocSinh.Name = "dgvHocSinh";
-            this.dgvHocSinh.Size = new System.Drawing.Size(572, 150);
+            this.dgvHocSinh.Size = new System.Drawing.Size(662, 225);
             this.dgvHocSinh.TabIndex = 16;
             // 
             // MSHS
@@ -249,7 +250,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 450);
+            this.ClientSize = new System.Drawing.Size(696, 431);
             this.Controls.Add(this.dgvHocSinh);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.txtDiaChi);
