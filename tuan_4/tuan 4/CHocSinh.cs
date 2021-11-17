@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace tuan_4
 {
-    public class CHocSinh
+    [Serializable] public class CHocSinh
     {
-        private string m_mshs;
-        private string m_hoten;
+        private string m_mshs, m_hoten, m_diachi;
         private DateTime m_ngaysinh;
         private string m_phai;
-        private string m_diachi;
-
         public string MSHS
         {
             get { return m_mshs; }
@@ -23,6 +20,11 @@ namespace tuan_4
         {
             get { return m_hoten; }
             set { m_hoten = value; }
+        }
+        public string DiaChi
+        {
+            get { return m_diachi; }
+            set { m_diachi = value; }
         }
         public DateTime NgaySinh
         {
@@ -34,27 +36,21 @@ namespace tuan_4
             get { return m_phai; }
             set { m_phai = value; }
         }
-        public string DiaChi
-        {
-            get { return m_diachi; }
-            set { m_diachi = value; }
-        }
-
         public CHocSinh()
         {
             m_mshs = "";
             m_hoten = "";
-            m_ngaysinh = new DateTime(1960, 12, 25);
-            m_phai = "";
             m_diachi = "";
+            m_phai = "";
+            m_ngaysinh = DateTime.Now;     
         }
-        public CHocSinh(string hs, string ht, DateTime ns, string p, string dc)
+        public CHocSinh(string ma, string hoten, string diachi, string phai, DateTime ngaysinh)
         {
-            m_mshs = hs;
-            m_hoten = ht;
-            m_ngaysinh = ns;
-            m_phai = p;
-            m_diachi = dc;
+            m_mshs = ma;
+            m_hoten = hoten;
+            m_diachi = diachi;
+            m_phai = phai;
+            m_ngaysinh = ngaysinh;
         }
     }
 }

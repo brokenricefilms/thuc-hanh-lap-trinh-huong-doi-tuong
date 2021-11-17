@@ -32,8 +32,8 @@
             this.lHoTen = new System.Windows.Forms.Label();
             this.lDiaChi = new System.Windows.Forms.Label();
             this.lNgaySinh = new System.Windows.Forms.Label();
-            this.btnPhaiNam = new System.Windows.Forms.RadioButton();
-            this.btnPhaiNu = new System.Windows.Forms.RadioButton();
+            this.radNam = new System.Windows.Forms.RadioButton();
+            this.radNu = new System.Windows.Forms.RadioButton();
             this.btnPhai = new System.Windows.Forms.GroupBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -43,8 +43,8 @@
             this.vHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vPhai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtMSHS = new System.Windows.Forms.TextBox();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
+            this.txtMsHocSinh = new System.Windows.Forms.TextBox();
+            this.txtTenHocSinh = new System.Windows.Forms.TextBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.dgvHocSinh = new System.Windows.Forms.DataGridView();
@@ -92,32 +92,32 @@
             this.lNgaySinh.TabIndex = 3;
             this.lNgaySinh.Text = "Ngày sinh";
             // 
-            // btnPhaiNam
+            // radNam
             // 
-            this.btnPhaiNam.AutoSize = true;
-            this.btnPhaiNam.Location = new System.Drawing.Point(16, 28);
-            this.btnPhaiNam.Name = "btnPhaiNam";
-            this.btnPhaiNam.Size = new System.Drawing.Size(47, 17);
-            this.btnPhaiNam.TabIndex = 4;
-            this.btnPhaiNam.TabStop = true;
-            this.btnPhaiNam.Text = "Nam";
-            this.btnPhaiNam.UseVisualStyleBackColor = true;
+            this.radNam.AutoSize = true;
+            this.radNam.Location = new System.Drawing.Point(16, 28);
+            this.radNam.Name = "radNam";
+            this.radNam.Size = new System.Drawing.Size(47, 17);
+            this.radNam.TabIndex = 4;
+            this.radNam.TabStop = true;
+            this.radNam.Text = "Nam";
+            this.radNam.UseVisualStyleBackColor = true;
             // 
-            // btnPhaiNu
+            // radNu
             // 
-            this.btnPhaiNu.AutoSize = true;
-            this.btnPhaiNu.Location = new System.Drawing.Point(16, 56);
-            this.btnPhaiNu.Name = "btnPhaiNu";
-            this.btnPhaiNu.Size = new System.Drawing.Size(39, 17);
-            this.btnPhaiNu.TabIndex = 5;
-            this.btnPhaiNu.TabStop = true;
-            this.btnPhaiNu.Text = "Nữ";
-            this.btnPhaiNu.UseVisualStyleBackColor = true;
+            this.radNu.AutoSize = true;
+            this.radNu.Location = new System.Drawing.Point(16, 56);
+            this.radNu.Name = "radNu";
+            this.radNu.Size = new System.Drawing.Size(39, 17);
+            this.radNu.TabIndex = 5;
+            this.radNu.TabStop = true;
+            this.radNu.Text = "Nữ";
+            this.radNu.UseVisualStyleBackColor = true;
             // 
             // btnPhai
             // 
-            this.btnPhai.Controls.Add(this.btnPhaiNam);
-            this.btnPhai.Controls.Add(this.btnPhaiNu);
+            this.btnPhai.Controls.Add(this.radNam);
+            this.btnPhai.Controls.Add(this.radNu);
             this.btnPhai.Location = new System.Drawing.Point(350, 40);
             this.btnPhai.Name = "btnPhai";
             this.btnPhai.Size = new System.Drawing.Size(200, 100);
@@ -184,19 +184,19 @@
             this.vDiaChi.HeaderText = "Địa chỉ";
             this.vDiaChi.Name = "vDiaChi";
             // 
-            // txtMSHS
+            // txtMsHocSinh
             // 
-            this.txtMSHS.Location = new System.Drawing.Point(131, 42);
-            this.txtMSHS.Name = "txtMSHS";
-            this.txtMSHS.Size = new System.Drawing.Size(100, 20);
-            this.txtMSHS.TabIndex = 12;
+            this.txtMsHocSinh.Location = new System.Drawing.Point(131, 42);
+            this.txtMsHocSinh.Name = "txtMsHocSinh";
+            this.txtMsHocSinh.Size = new System.Drawing.Size(100, 20);
+            this.txtMsHocSinh.TabIndex = 12;
             // 
-            // txtHoTen
+            // txtTenHocSinh
             // 
-            this.txtHoTen.Location = new System.Drawing.Point(131, 77);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(100, 20);
-            this.txtHoTen.TabIndex = 13;
+            this.txtTenHocSinh.Location = new System.Drawing.Point(131, 77);
+            this.txtTenHocSinh.Name = "txtTenHocSinh";
+            this.txtTenHocSinh.Size = new System.Drawing.Size(100, 20);
+            this.txtTenHocSinh.TabIndex = 13;
             // 
             // txtDiaChi
             // 
@@ -224,7 +224,6 @@
             this.dgvHocSinh.Name = "dgvHocSinh";
             this.dgvHocSinh.Size = new System.Drawing.Size(572, 150);
             this.dgvHocSinh.TabIndex = 16;
-            this.dgvHocSinh.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHocSinh_RowEnter);
             // 
             // MSHS
             // 
@@ -254,8 +253,8 @@
             this.Controls.Add(this.dgvHocSinh);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.txtDiaChi);
-            this.Controls.Add(this.txtHoTen);
-            this.Controls.Add(this.txtMSHS);
+            this.Controls.Add(this.txtTenHocSinh);
+            this.Controls.Add(this.txtMsHocSinh);
             this.Controls.Add(this.btnLuuFile);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnXoa);
@@ -282,15 +281,15 @@
         private System.Windows.Forms.Label lHoTen;
         private System.Windows.Forms.Label lDiaChi;
         private System.Windows.Forms.Label lNgaySinh;
-        private System.Windows.Forms.RadioButton btnPhaiNam;
-        private System.Windows.Forms.RadioButton btnPhaiNu;
+        private System.Windows.Forms.RadioButton radNam;
+        private System.Windows.Forms.RadioButton radNu;
         private System.Windows.Forms.GroupBox btnPhai;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnLuuFile;
-        private System.Windows.Forms.TextBox txtMSHS;
-        private System.Windows.Forms.TextBox txtHoTen;
+        private System.Windows.Forms.TextBox txtMsHocSinh;
+        private System.Windows.Forms.TextBox txtTenHocSinh;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn vMAHS;

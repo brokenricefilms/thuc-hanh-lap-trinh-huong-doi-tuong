@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CHocSinh.cs" />
-    <Compile Include="CLopHoc.cs" />
     <Compile Include="frmHocSinh.cs">
       <SubType>Form</SubType>
     </Compile>

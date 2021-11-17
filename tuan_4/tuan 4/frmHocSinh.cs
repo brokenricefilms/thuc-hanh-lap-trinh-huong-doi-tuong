@@ -15,122 +15,145 @@ namespace tuan_4
     public partial class frmHocSinh : Form
     {
         private List<CHocSinh> dsHS;
- 
         public frmHocSinh()
         {
             InitializeComponent();
         }
-
-        private void HienThi()
+        private void hienThi()
         {
             dgvHocSinh.DataSource = dsHS.ToList();
         }
-        
         private CHocSinh timHS(string ma)
         {
-            foreach(CHocSinh item in dsHS)
+            foreach (CHocSinh item in dsHS)
             {
                 if (item.MSHS == ma)
-                {
                     return item;
-                }
             }
             return null;
         }
-
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
-
+            dsHS = new List<CHocSinh>();
+            if (docFile("hs1.out") == true)
+            {
+                hienThi();
+            }
+            else
+                MessageBox.Show("Khong doc duoc");
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             CHocSinh hs = new CHocSinh();
-            hs.MSHS = txtMSHS.Text;
-            hs.HoTen = txtHoTen.Text;
+            hs.MSHS = txtMsHocSinh.Text;
+            hs.HoTen = txtTenHocSinh.Text;
             hs.DiaChi = txtDiaChi.Text;
-
-            if (btnPhaiNam.Checked == true)
-            {
+            if (radNam.Checked == true)
                 hs.Phai = "Nam";
-            } else
-            {
-                hs.Phai = "Nữ";
-            }
+            else
+                hs.Phai = "Nu";
             hs.NgaySinh = dtpNgaySinh.Value;
             if (timHS(hs.MSHS) == null)
             {
                 dsHS.Add(hs);
-                HienThi();
-            } else
-            {
-                MessageBox.Show("ma hoc da co trong danh sach");
+                hienThi();
             }
+            else
+                MessageBox.Show("Ma HS da co torng ds");
+        }
+
+        private void dgvHocSinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMsHocSinh.Text = dgvHocSinh.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtTenHocSinh.Text = dgvHocSinh.Rows[e.RowIndex].Cells[1].Value.ToString();
+            dtpNgaySinh.Value = Convert.ToDateTime(dgvHocSinh.Rows[e.RowIndex].Cells[2].Value.ToString());
+            if (dgvHocSinh.Rows[e.RowIndex].Cells[3].Value.ToString() == "Nam")
+                radNam.Checked = true;
+            else
+                radNu.Checked = true;
+            txtDiaChi.Text = dgvHocSinh.Rows[e.RowIndex].Cells[4].Value.ToString();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string mahs = txtMSHS.Text;
-            if (timHS(mahs) == null)
+            string mahs = txtMsHocSinh.Text;
+            if(timHS(mahs)==null)
             {
-                MessageBox.Show("khong co hoc sinh trong danh sach");
+                MessageBox.Show("Khong co hs trong ds");
                 return;
             }
             foreach(CHocSinh item in dsHS)
             {
-                if (item.MSHS == mahs)
+                if(item.MSHS==mahs)
                 {
                     dsHS.Remove(item);
-                    HienThi();
+                    hienThi();
                     MessageBox.Show("xoa thanh cong");
                     return;
-                }
+                }    
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string mahs = txtMSHS.Text;
-            if (timHS(mahs) == null)
+            string mahs = txtMsHocSinh.Text;
+            if(timHS(mahs)==null)
             {
-                MessageBox.Show("khong co hoc sinh trong danh sach");
+                MessageBox.Show("Khong co hoc sinh trong ds.");
                 return;
-            }
-            foreach(CHocSinh item in dsHS)
+            }    
+            foreach( CHocSinh item in dsHS)
             {
-                item.HoTen = txtHoTen.Text;
-                item.DiaChi = txtDiaChi.Text;
-                item.NgaySinh = dtpNgaySinh.Value;
-                if (btnPhaiNam.Checked == true)
+                if(item.MSHS==mahs)
                 {
-                    item.Phai = "Nam";
-                } else
-                {
-                    item.Phai = "Nữ";
+                    item.HoTen = txtTenHocSinh.Text;
+                    item.MSHS = txtMsHocSinh.Text;
+                    item.NgaySinh = dtpNgaySinh.Value;
+                    item.DiaChi = txtDiaChi.Text;
+                    if (radNam.Checked == true)
+                        item.Phai = "Nam";
+                    else
+                        item.Phai = "Nữ";
+                    hienThi();
+                    return;
                 }
-                HienThi();
             }
         }
-
+        public bool ghiFile(string tenFile)
+        {
+            FileStream f = new FileStream(tenFile, FileMode.Create);
+            if (f == null)
+                return false;
+            else
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(f, dsHS);
+                f.Close();
+                return true;
+            }
+        }
+        public bool docFile(string tenFile)
+        {
+            FileStream f = new FileStream(tenFile, FileMode.Open);
+            if (f == null)
+                return false;
+            else
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                dsHS = bf.Deserialize(f) as List<CHocSinh>;
+                if (dsHS == null)
+                    dsHS = new List<CHocSinh>();
+                f.Close();
+                return true;
+            }
+        }
         private void btnLuuFile_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void dgvHocSinh_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            txtMSHS.Text = dgvHocSinh.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtHoTen.Text = dgvHocSinh.Rows[e.RowIndex].Cells[1].Value.ToString();
-            dtpNgaySinh.Value = Convert.ToDateTime(dgvHocSinh.Rows[e.RowIndex].Cells[2].Value.ToString());
-
-            if (dgvHocSinh.Rows[e.RowIndex].Cells[3].Value.ToString() == "Nam")
-            {
-                btnPhaiNam.Checked = true;
-            } else
-            {
-                btnPhaiNu.Checked = true;
-            }
-            txtDiaChi.Text = dgvHocSinh.Rows[e.RowIndex].Cells[4].Value.ToString();
+            if (ghiFile("hs1.out") == true)
+                MessageBox.Show("Ghi file thanh cong");
+            else
+                MessageBox.Show("Ghi file khong thanh cong");
         }
     }
 }
