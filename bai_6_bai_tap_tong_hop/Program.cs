@@ -3,37 +3,73 @@ using System.Collections.Generic;
 
 namespace bai_6_bai_tap_tong_hop {
   class Program {
-    static int demSoThiSinhKhoiNangkhieu(List<ClassThiSinh> ds) {
-      int dem = 0;
-
-      foreach (ClassThiSinh ts in ds) {
-        if (ts.laKhoiNangKhieu() == true)
-          dem++;
-      }
-
-      return dem;
-    }
-    static List<ClassThiSinh> getDSThiSinhKhoiA(List<ClassThiSinh> ds) {
-      List<ClassThiSinh> ts = new List<ClassThiSinh>();
-      foreach (ClassThiSinh i in ds) {
-        if (i is ClassKhoiA)
-          ts.Add(i);
-      }
-      return ts;
-    }
-    static double getDiemLonNhatKhoiA(List<ClassThiSinh> ds) {
-      double m = 0;
-      foreach (ClassThiSinh i in ds) {
-        if (i is ClassKhoiA) {
-          if (i.TongDiem() > m)
-            m = i.TongDiem();
+    static int demSoThiSinhKhoiNangkhieu(List<ClassThiSinh> danhSach) {
+      int count = 0;
+      foreach (ClassThiSinh thiSinh in danhSach) {
+        if (thiSinh.laKhoiNangKhieu() == true) {
+          count++;
         }
       }
-      return m;
+      return count;
     }
-    static List<ClassThiSinh> getDSThiSinhDat(List<ClassThiSinh> ds) {
+
+    static int demSoThiSinhKhoiA(List<ClassThiSinh> danhSach) {
+      int count = 0;
+      foreach (ClassThiSinh thiSinh in danhSach) {
+        if (thiSinh.laKhoiA() == true) {
+          count++;
+        }
+      }
+      return count;
+    }
+
+    static List<ClassThiSinh> getDanhSachThiSinhKhoiNangKhieu(List<ClassThiSinh> danhSach) {
+      List<ClassThiSinh> thiSinh = new List<ClassThiSinh>();
+      foreach (ClassThiSinh i in danhSach) {
+        if (i is ClassKhoiNangKhieu) {
+          thiSinh.Add(i);
+        }
+      }
+      return thiSinh;
+    }
+
+    static List<ClassThiSinh> getDanhSachThiSinhKhoiA(List<ClassThiSinh> danhSach) {
+      List<ClassThiSinh> thiSinh = new List<ClassThiSinh>();
+      foreach (ClassThiSinh i in danhSach) {
+        if (i is ClassKhoiA) {
+          thiSinh.Add(i);
+        }
+      }
+      return thiSinh;
+    }
+
+    static double getDiemLonNhatKhoiA(List<ClassThiSinh> danhSach) {
+      double max = 0;
+      foreach (ClassThiSinh i in danhSach) {
+        if (i is ClassKhoiA) {
+          if (i.TongDiem() > max) {
+            max = i.TongDiem();
+          }
+        }
+      }
+      return max;
+    }
+
+    static double getDiemLonNhatKhoiNangKhieu(List<ClassThiSinh> danhSach) {
+      double max = 0;
+      foreach (ClassThiSinh i in danhSach) {
+        if (i is ClassKhoiNangKhieu) {
+          if (i.TongDiem() > max) {
+            max = i.TongDiem();
+          }
+        }
+      }
+      return max;
+    }
+
+    static List<ClassThiSinh> getDSThiSinhDat(List<ClassThiSinh> danhSach) {
       List<ClassThiSinh> tmp = new List<ClassThiSinh>();
-      foreach (ClassThiSinh i in ds) {
+      foreach (ClassThiSinh i in danhSach) {
         if (i.KetQua() == KieuKetQua.Dat) {
           tmp.Add(i);
         }
@@ -42,22 +78,30 @@ namespace bai_6_bai_tap_tong_hop {
     }
 
     static void Main(string[] args) {
-      List<ClassThiSinh> dsts = new List<ClassThiSinh>();
+      List<ClassThiSinh> danhSachThiSinh = new List<ClassThiSinh>();
       List<ClassThiSinh> n = new List<ClassThiSinh>();
-      dsts.Add(new ClassKhoiA("001", "abc1", 5, 6, 7));
-      dsts.Add(new ClassKhoiA("002", "abc2", 1, 2, 7));
-      dsts.Add(new ClassKhoiA("003", "abc3", 6, 2, 8));
-      dsts.Add(new ClassKhoiNangKhieu("004", "abc4", 6, 8));
-      dsts.Add(new ClassKhoiNangKhieu("005", "abc5", 9, 8));
 
-      Console.WriteLine("\nSo thi sinh thuoc khoi nang khieu la " +
-                        demSoThiSinhKhoiNangkhieu(dsts));
+      danhSachThiSinh.Add(new ClassKhoiA("dh51", "Nicholas", 5, 5, 5));
+      danhSachThiSinh.Add(new ClassKhoiA("dh52", "Nick", 9, 9, 9.5));
+      danhSachThiSinh.Add(new ClassKhoiA("dh53", "Nico", 7, 7, 7));
+      danhSachThiSinh.Add(new ClassKhoiNangKhieu("dh54", "Thuận good boy", 9.5, 9.5));
+      danhSachThiSinh.Add(new ClassKhoiNangKhieu("dh55", "Thuận đẹp trai", 10, 10));
+      danhSachThiSinh.Add(new ClassKhoiNangKhieu("dh56", "Thuận siêu cute", 9.5, 10));
 
-      Console.WriteLine("\nDanh sach thi sinh Khoi A:\n");
-      foreach (ClassThiSinh ts in getDSThiSinhKhoiA(dsts)) {
-        Console.WriteLine(ts.MaThiSinh + " - " + ts.Hoten);
+      Console.WriteLine("\nDanh sách thí sinh khối năng khiếu:");
+      Console.WriteLine("Số thí sinh thuộc khối năng khiếu = " +
+                        demSoThiSinhKhoiNangkhieu(danhSachThiSinh));
+      foreach (ClassThiSinh thiSinh in getDanhSachThiSinhKhoiNangKhieu(danhSachThiSinh)) {
+        Console.WriteLine(thiSinh.MaThiSinh + " - " + thiSinh.Hoten);
       }
-      Console.WriteLine("Diem lon nhat la" + getDiemLonNhatKhoiA(dsts));
+      Console.WriteLine("Điểm lớn nhất là " + getDiemLonNhatKhoiNangKhieu(danhSachThiSinh));
+
+      Console.WriteLine("\nDanh sách thí sinh khối A:");
+      Console.WriteLine("Số thí sinh thuộc khối A = " + demSoThiSinhKhoiA(danhSachThiSinh));
+      foreach (ClassThiSinh thiSinh in getDanhSachThiSinhKhoiA(danhSachThiSinh)) {
+        Console.WriteLine(thiSinh.MaThiSinh + " - " + thiSinh.Hoten);
+      }
+      Console.WriteLine("Điểm lớn nhất là " + getDiemLonNhatKhoiA(danhSachThiSinh));
       Console.ReadLine();
     }
   }
