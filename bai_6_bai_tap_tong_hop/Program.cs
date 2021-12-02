@@ -109,7 +109,6 @@ namespace bai_6_bai_tap_tong_hop {
 
     static void Main(string[] args) {
       List<ClassThiSinh> danhSachThiSinh = new List<ClassThiSinh>();
-      List<ClassThiSinh> n = new List<ClassThiSinh>();
 
       // data gia phả nồi giống Thuận Bá Vương
       danhSachThiSinh.Add(new ClassKhoiA("dh51", "Thuận ngiu ngốc", 3, 3, 3));
