@@ -39,5 +39,9 @@
     public virtual bool laKhoiNangKhieu() {
       return false;
     }
+
+    public virtual bool diemLiet() {
+      return false;
+    }
   }
 }

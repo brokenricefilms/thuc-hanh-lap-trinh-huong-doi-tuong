@@ -88,19 +88,8 @@ namespace bai_6_bai_tap_tong_hop {
     }
 
     // @todo use ClassKhoiNangKhieu
-    // static List<ClassThiSinh> getDanhSachThiSinhNangKhieuKhongDat(List<ClassThiSinh> danhSach) {
-    // List<ClassThiSinh> tmp = new List<ClassThiSinh>();
-    // foreach (ClassThiSinh i in danhSach) {
-    // if (i is ClassKhoiNangKhieu && i.KetQua() == KieuKetQua.KhongDat) {
-    // tmp.Add(i);
-    // }
-    // }
-    // return tmp;
-    // }
-
-    static List<ClassKhoiNangKhieu> getDanhSachThiSinhNangKhieuKhongDat(
-        List<ClassThiSinh> danhSach) {
-      List<ClassKhoiNangKhieu> tmp = new List<ClassKhoiNangKhieu>();
+    static List<ClassThiSinh> getDanhSachThiSinhNangKhieuKhongDat(List<ClassThiSinh> danhSach) {
+      List<ClassThiSinh> tmp = new List<ClassThiSinh>();
       foreach (ClassThiSinh i in danhSach) {
         if (i is ClassKhoiNangKhieu && i.KetQua() == KieuKetQua.KhongDat) {
           tmp.Add(i);
@@ -132,10 +121,11 @@ namespace bai_6_bai_tap_tong_hop {
 
       Console.WriteLine("\nDanh sách thí sinh khối năng khiếu:");
       Console.WriteLine("-----------------------------");
-      Console.WriteLine("Mã thí sinh" + " | " + "Họ và tên");
+      Console.WriteLine("Mã thí sinh" + " | " + "Họ và tên" + " | " + "Điểm Toán : năng khiếu");
       Console.WriteLine("-----------------------------");
-      foreach (ClassThiSinh thiSinh in getDanhSachThiSinhKhoiNangKhieu(danhSachThiSinh)) {
-        Console.WriteLine(thiSinh.MaThiSinh + "        | " + thiSinh.Hoten);
+      foreach (ClassKhoiNangKhieu thiSinh in getDanhSachThiSinhKhoiNangKhieu(danhSachThiSinh)) {
+        Console.WriteLine(thiSinh.MaThiSinh + "        | " + thiSinh.Hoten + " | " +
+                          thiSinh.DiemToan + " : " + thiSinh.DiemNangKhieu);
       }
       Console.WriteLine("→ Số thí sinh thuộc khối năng khiếu = " +
                         demSoThiSinhKhoiNangkhieu(danhSachThiSinh));
@@ -143,10 +133,11 @@ namespace bai_6_bai_tap_tong_hop {
 
       Console.WriteLine("\nDanh sách thí sinh khối A");
       Console.WriteLine("-----------------------------");
-      Console.WriteLine("Mã thí sinh" + " | " + "Họ và tên");
+      Console.WriteLine("Mã thí sinh" + " | " + "Họ và tên" + " | " + " Điểm Toán : Lý : Hóa");
       Console.WriteLine("-----------------------------");
-      foreach (ClassThiSinh thiSinh in getDanhSachThiSinhKhoiA(danhSachThiSinh)) {
-        Console.WriteLine(thiSinh.MaThiSinh + "        | " + thiSinh.Hoten);
+      foreach (ClassKhoiA thiSinh in getDanhSachThiSinhKhoiA(danhSachThiSinh)) {
+        Console.WriteLine(thiSinh.MaThiSinh + "        | " + thiSinh.Hoten + " | " +
+                          thiSinh.DiemToan + " : " + thiSinh.DiemLy + " : " + thiSinh.DiemHoa);
       }
       Console.WriteLine("→ Số thí sinh thuộc khối A = " + demSoThiSinhKhoiA(danhSachThiSinh));
       Console.WriteLine("→ Điểm lớn nhất là " + getDiemLonNhatKhoiA(danhSachThiSinh));
