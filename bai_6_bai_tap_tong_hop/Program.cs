@@ -87,8 +87,20 @@ namespace bai_6_bai_tap_tong_hop {
       return tmp;
     }
 
-    static List<ClassThiSinh> getDanhSachThiSinhNangKhieuKhongDat(List<ClassThiSinh> danhSach) {
-      List<ClassThiSinh> tmp = new List<ClassThiSinh>();
+    // @todo use ClassKhoiNangKhieu
+    // static List<ClassThiSinh> getDanhSachThiSinhNangKhieuKhongDat(List<ClassThiSinh> danhSach) {
+    // List<ClassThiSinh> tmp = new List<ClassThiSinh>();
+    // foreach (ClassThiSinh i in danhSach) {
+    // if (i is ClassKhoiNangKhieu && i.KetQua() == KieuKetQua.KhongDat) {
+    // tmp.Add(i);
+    // }
+    // }
+    // return tmp;
+    // }
+
+    static List<ClassKhoiNangKhieu> getDanhSachThiSinhNangKhieuKhongDat(
+        List<ClassThiSinh> danhSach) {
+      List<ClassKhoiNangKhieu> tmp = new List<ClassKhoiNangKhieu>();
       foreach (ClassThiSinh i in danhSach) {
         if (i is ClassKhoiNangKhieu && i.KetQua() == KieuKetQua.KhongDat) {
           tmp.Add(i);
@@ -97,10 +109,10 @@ namespace bai_6_bai_tap_tong_hop {
       return tmp;
     }
 
-    // static List<ClassThiSinh> getDanhSachThiSinhKhoiADiemLiet(List<ClassThiSinh> danhSach) {
+    // static List<ClassThiSinh> getDanhSachThiSinhKhoiAdiemLiet(List<ClassThiSinh> danhSach) {
     // List<ClassThiSinh> tmp = new List<ClassThiSinh>();
     // foreach (ClassThiSinh i in danhSach) {
-    // if (i is ClassKhoiA && i.() <= 1) {
+    // if (i is ClassKhoiA && i.DiemToan() <= 1) {
     // tmp.Add(i);
     // }
     // }
