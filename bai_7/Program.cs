@@ -33,14 +33,11 @@ namespace bai_7 {
       return min;
     }
 
-    public static ClassHinhChuNhat timHinhChuNhatChuViLonNhat(List<ClassHinhHoc> danhSach) {
-      ClassHinhChuNhat max = null;
-      foreach (ClassHinhHoc h in danhSach) {
-        if (h.kieuDoiTuong() == KieuHinh.HinhChuNhat) {
-          if (max == null)
-            max = (ClassHinhChuNhat)h;
-        } else if (max.chuVi() < h.chuVi()) {
-          max = (ClassHinhChuNhat)h;
+    public static ClassHinhHoc timHinhChuNhatChuViLonNhat(List<ClassHinhHoc> danhSach) {
+      ClassHinhHoc max = danhSach[0];
+      foreach (ClassHinhHoc i in danhSach) {
+        if (i.kieuDoiTuong() == KieuHinh.HinhChuNhat && max.chuVi() < i.chuVi()) {
+          max = i;
         }
       }
       return max;
@@ -56,6 +53,17 @@ namespace bai_7 {
       danhSach.Add(new ClassHinhTamGiac(9, 9, 9));
       danhSach.Add(new ClassHinhTamGiac(8, 8, 8));
 
+      foreach (ClassHinhVuong i in timDanhSachHinhVuong(danhSach)) {
+        Console.WriteLine("hình vuông có chiều dài " + i.ChieuDai);
+      }
+
+      Console.WriteLine("\n");
+
+      int soHinhChuNhat = demHinhChuNhat(danhSach);
+      Console.WriteLine("Số hình chữ nhật: " + soHinhChuNhat);
+
+      Console.WriteLine("\n");
+
       foreach (ClassHinhHoc i in danhSach) {
         if (i.kieuDoiTuong() == KieuHinh.HinhChuNhat) {
           Console.WriteLine("Hình chữ nhật có hiện tích = " + i.dienTich() +
@@ -68,11 +76,15 @@ namespace bai_7 {
         }
       }
 
-      int soHinhChuNhat = demHinhChuNhat(danhSach);
-      Console.WriteLine("Số hình chữ nhật: " + soHinhChuNhat);
+      Console.WriteLine("\n");
 
       ClassHinhHoc min = timHinhDienTichNhoNhat(danhSach);
       Console.WriteLine("Diện tích nhỏ nhất: " + min.dienTich());
+
+      Console.WriteLine("\n");
+
+      ClassHinhHoc max = timHinhChuNhatChuViLonNhat(danhSach);
+      Console.WriteLine("Hình chữ nhật có chu vi lớn nhất: " + max.chuVi());
     }
   }
 }
