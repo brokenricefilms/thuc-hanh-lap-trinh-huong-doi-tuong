@@ -87,21 +87,20 @@ namespace bai_6_bai_tap_tong_hop {
       return tmp;
     }
 
-    static List<ClassKhoiNangKhieu> getDanhSachThiSinhNangKhieuKhongDat(
-        List<ClassThiSinh> danhSach) {
-      List<ClassKhoiNangKhieu> tmp = new List<ClassKhoiNangKhieu>();
-      foreach (ClassKhoiNangKhieu i in danhSach) {
-        if (i.KetQua() == KieuKetQua.KhongDat) {
+    static List<ClassThiSinh> getDanhSachThiSinhNangKhieuKhongDat(List<ClassThiSinh> danhSach) {
+      List<ClassThiSinh> tmp = new List<ClassThiSinh>();
+      foreach (ClassThiSinh i in danhSach) {
+        if (i is ClassKhoiNangKhieu && i.KetQua() == KieuKetQua.KhongDat) {
           tmp.Add(i);
         }
       }
       return tmp;
     }
 
-    // static List<ClassKhoiA> getDanhSachThiSinhKhoiADiemLiet(List<ClassThiSinh> danhSach) {
-    // List<ClassKhoiA> tmp = new List<ClassKhoiA>();
-    // foreach (ClassKhoiA i in danhSach) {
-    // if (i.DiemToan() <= 1) {
+    // static List<ClassThiSinh> getDanhSachThiSinhKhoiADiemLiet(List<ClassThiSinh> danhSach) {
+    // List<ClassThiSinh> tmp = new List<ClassThiSinh>();
+    // foreach (ClassThiSinh i in danhSach) {
+    // if (i is ClassKhoiA && i.() <= 1) {
     // tmp.Add(i);
     // }
     // }
@@ -161,14 +160,14 @@ namespace bai_6_bai_tap_tong_hop {
       Console.WriteLine("-----------------------------");
       Console.WriteLine("Mã thí sinh" + " | " + "Họ và tên");
       Console.WriteLine("-----------------------------");
-      foreach (ClassKhoiNangKhieu thiSinh in getDanhSachThiSinhNangKhieuKhongDat(danhSachThiSinh)) {
+      foreach (ClassThiSinh thiSinh in getDanhSachThiSinhNangKhieuKhongDat(danhSachThiSinh)) {
         Console.WriteLine(thiSinh.MaThiSinh + "        | " + thiSinh.Hoten);
       }
 
-      Console.WriteLine("\nDanh sách thí sinh Khối A bị điểm liệt");
-      Console.WriteLine("-----------------------------");
-      Console.WriteLine("Mã thí sinh" + " | " + "Họ và tên");
-      Console.WriteLine("-----------------------------");
+      // Console.WriteLine("\nDanh sách thí sinh Khối A bị điểm liệt");
+      // Console.WriteLine("-----------------------------");
+      // Console.WriteLine("Mã thí sinh" + " | " + "Họ và tên");
+      // Console.WriteLine("-----------------------------");
       // foreach (ClassThiSinh thiSinh in getDanhSachThiSinhKhoiADiemLiet(danhSachThiSinh)) {
       // Console.WriteLine(thiSinh.MaThiSinh + "        | " + thiSinh.Hoten);
       // }
