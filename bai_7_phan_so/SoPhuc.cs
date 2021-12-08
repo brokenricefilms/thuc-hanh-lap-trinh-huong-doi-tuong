@@ -23,10 +23,11 @@
       this._phanAo = ao;
     }
 
-    public KieuSo cong(KieuSo a) {
+    // https://vi.wikipedia.org/wiki/S%E1%BB%91_ph%E1%BB%A9c
+    public KieuSo cong(KieuSo x) {
       SoPhuc tong = new SoPhuc();
-      tong._phanThuc = this._phanThuc + ((SoPhuc)a)._phanThuc;
-      tong._phanAo = this._phanAo + ((SoPhuc)a)._phanAo;
+      tong._phanThuc = this._phanThuc + ((SoPhuc)x)._phanThuc;
+      tong._phanAo = this._phanAo + ((SoPhuc)x)._phanAo;
       return tong;
     }
 

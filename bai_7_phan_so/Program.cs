@@ -48,6 +48,16 @@
       }
     }
 
+    public static void timPhanSoLonNhat(List<KieuSo> daySo) {
+      PhanSo max = new PhanSo(1, 999999999);
+      foreach (KieuSo i in daySo) {
+        if (i.laPhanSo() && (i.tuSo / i.mauSo) > max) {
+        }
+      }
+      Console.Write("Phân số lớn nhất: ");
+      Console.WriteLine(max.xuat());
+    }
+
     static void Main(string[] args) {
       List<KieuSo> daySo = new List<KieuSo>();
 
