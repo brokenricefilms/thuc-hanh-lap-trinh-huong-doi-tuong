@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace bai_7 {
+﻿namespace bai_7 {
   class Program {
     private static List<ClassHinhHoc> timDanhSachHinhVuong(List<ClassHinhHoc> danhSach) {
       List<ClassHinhHoc> dsHinhVuong = new List<ClassHinhHoc>();
