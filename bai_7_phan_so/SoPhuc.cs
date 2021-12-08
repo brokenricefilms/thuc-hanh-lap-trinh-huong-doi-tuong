@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VD_Interface {
+﻿namespace VD_Interface {
   class SoPhuc : KieuSo {
     private double _phanThuc;
     private double _phanAo;

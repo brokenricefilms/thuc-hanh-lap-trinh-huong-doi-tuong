@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VD_Interface {
+﻿namespace VD_Interface {
   class PhanSo : KieuSo {
     private int _tuSo;
     private int _mauSo;
@@ -38,7 +32,7 @@ namespace VD_Interface {
       return ketQua;
     }
 
-    public int timUCLN(PhanSo a) {
+    public int timUocChungLonNhat(PhanSo a) {
       int tu = Math.Abs(a._tuSo);
       int mau = Math.Abs(a._mauSo);
       while (tu != mau) {
@@ -52,7 +46,7 @@ namespace VD_Interface {
 
     public PhanSo rutGon(PhanSo a) {
       PhanSo ketQua = new PhanSo();
-      int uocChungLonNhat = timUCLN(a);
+      int uocChungLonNhat = timUocChungLonNhat(a);
       ketQua._tuSo = a._tuSo / uocChungLonNhat;
       ketQua._mauSo = a._mauSo / uocChungLonNhat;
       return ketQua;
