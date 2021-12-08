@@ -23,15 +23,6 @@
       this._mauSo = mauSo;
     }
 
-    public KieuSo cong(KieuSo x) {
-      PhanSo tong = new PhanSo();
-      tong._tuSo = this._tuSo * ((PhanSo)x).mauSo + this._mauSo * ((PhanSo)x)._tuSo;
-      tong._mauSo = this._mauSo * ((PhanSo)x)._mauSo;
-      PhanSo ketQua = new PhanSo();
-      ketQua = rutGon(tong);
-      return ketQua;
-    }
-
     public int timUocChungLonNhat(PhanSo x) {
       int tu = Math.Abs(x._tuSo);
       int mau = Math.Abs(x._mauSo);
@@ -52,9 +43,12 @@
       return ketQua;
     }
 
-    public KieuSo chia(KieuSo x) {
-      float ketQua;
-      ketQua = this._tuSo / this._mauSo;
+    public KieuSo cong(KieuSo x) {
+      PhanSo tong = new PhanSo();
+      tong._tuSo = this._tuSo * ((PhanSo)x).mauSo + this._mauSo * ((PhanSo)x)._tuSo;
+      tong._mauSo = this._mauSo * ((PhanSo)x)._mauSo;
+      PhanSo ketQua = new PhanSo();
+      ketQua = rutGon(tong);
       return ketQua;
     }
 
