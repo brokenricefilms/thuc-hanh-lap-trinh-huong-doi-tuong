@@ -1,4 +1,4 @@
-﻿namespace VD_Interface {
+﻿namespace bai_7_phan_so {
   class Program {
     public static void nhap(List<KieuSo> daySo) {
       int n, input;
