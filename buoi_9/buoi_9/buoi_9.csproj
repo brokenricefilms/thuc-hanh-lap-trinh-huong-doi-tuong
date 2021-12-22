@@ -52,11 +52,11 @@
     <Compile Include="FormQuanLyHocSinh.Designer.cs">
       <DependentUpon>FormQuanLyHocSinh.cs</DependentUpon>
     </Compile>
-    <Compile Include="HocSinh.cs" />
+    <Compile Include="ClassHocSinh.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TruyCapDuLieu.cs" />
-    <Compile Include="XuLyHocSinh.cs" />
+    <Compile Include="ClassTruyCapDuLieu.cs" />
+    <Compile Include="ClassXuLyHocSinh.cs" />
     <EmbeddedResource Include="FormQuanLyHocSinh.resx">
       <DependentUpon>FormQuanLyHocSinh.cs</DependentUpon>
     </EmbeddedResource>
