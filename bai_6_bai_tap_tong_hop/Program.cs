@@ -87,7 +87,6 @@ namespace bai_6_bai_tap_tong_hop {
       return tmp;
     }
 
-    // @todo use ClassKhoiNangKhieu
     static List<ClassThiSinh> getDanhSachThiSinhNangKhieuKhongDat(List<ClassThiSinh> danhSach) {
       List<ClassThiSinh> tmp = new List<ClassThiSinh>();
       foreach (ClassThiSinh i in danhSach) {
