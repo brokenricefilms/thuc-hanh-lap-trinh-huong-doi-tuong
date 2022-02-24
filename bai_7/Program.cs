@@ -51,14 +51,12 @@
       danhSach.Add(new ClassHinhTamGiac(8, 8, 8));
       danhSach.Add(new ClassHinhTamGiac(9, 9, 9));
 
-      // @todo danh sach hinh chu nhat, danh sach hinh tam giac
       foreach (ClassHinhVuong i in timDanhSachHinhVuong(danhSach)) {
         Console.WriteLine("hình vuông có chiều dài " + i.ChieuDai);
       }
 
       Console.WriteLine("\n");
 
-      // @todo so hinh vuong, so hinh tam giac
       int soHinhChuNhat = demHinhChuNhat(danhSach);
       Console.WriteLine("Số hình chữ nhật: " + soHinhChuNhat);
 
@@ -70,7 +68,6 @@
                             " chu vi = " + i.chuVi());
         } else if (i.kieuDoiTuong() == KieuHinh.HinhVuong) {
           Console.WriteLine("Hình vuông có diện tích = " + i.dienTich() + " chu vi = " + i.chuVi());
-          // @todo dien tich -> lam tron so thap phan
         } else if (i.kieuDoiTuong() == KieuHinh.HinhTamGiac) {
           Console.WriteLine("Hình tam giác có diện tích = " + Math.Round(i.dienTich(), 2) +
                             " chu vi = " + i.chuVi());
